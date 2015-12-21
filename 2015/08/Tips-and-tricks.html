@@ -12,6 +12,10 @@
 
     <link rel="stylesheet" href="/blog/css/main.css">
     <link rel="canonical" href="http://www.data-laborer.com/blog/2015/08/Tips-and-tricks.html">
+	    
+	<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 </head>
 
 
@@ -19,19 +23,15 @@
 
     <header class="site-header">
 
+
   <div class="wrapper">
 
-    <a class="site-title" href="/blog/">Data Laborer</a>
+    <a class="site-title" href="/blog/" >Data Laborer </a>
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
-        <svg viewBox="0 0 18 15">
-          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
-          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
-          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
-        </svg>
       </a>
-
+	
       <div class="trigger">
         
           
@@ -62,29 +62,29 @@
   </header>
 
   <article class="post-content">
-    <p>This is a set of tips and tricks to know when coding in R which aren’t for beginners but not as advanced as Hadley Wickham <a href="http://adv-r.had.co.nz/">advance-R</a>.</p>
+    <p>This is a set of tips and tricks to know when coding in R which aren&#39;t for beginners but not as advanced as Hadley Wickham <a href="http://adv-r.had.co.nz/">advance-R</a>.</p>
 
 <p>The idea is to compile the best practice in R which increased my productivity in the last years and share them.</p>
 
 <h3> When working with Rstudio, one project = one folder </h3>
 
-<p>Project could be found in file -&gt; New Project…</p>
+<p>Project could be found in file -&gt; New Project...</p>
 
 <p>This is especially a good advice if you work on different projects or are used to have multiple session of R open at the same time.</p>
 
 <p>It allows to fastly close and open a project, as the session is saved, including the tab of your session and the data in your memory.
-The only thing to take care is to have a light amount of data in memory. Otherwise, the project could take a while to close. If it becomes problematic, there is an option in Tools&gt;global options&gt;untick “always save history”</p>
+The only thing to take care is to have a light amount of data in memory. Otherwise, the project could take a while to close. If it becomes problematic, there is an option in Tools&gt;global options&gt;untick &quot;always save history&quot;</p>
 
 <p>Personally, I like organise my project in the following directory structure:
 Project</p>
 
-<p>– – PGM</p>
+<p>-- -- PGM</p>
 
-<p>– – DOC</p>
+<p>-- -- DOC</p>
 
-<p>– – DATA</p>
+<p>-- -- DATA</p>
 
-<p>– – OUTPUT</p>
+<p>-- -- OUTPUT</p>
 
 <h3> Style your code </h3>
 
@@ -92,31 +92,31 @@ Project</p>
 
 <p>I am a big fan of <a href="https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml">google style</a> (10 min) when coding in R.</p>
 
-<p>The most important rules:</p>
+<p>The most important rules:
 <ul type="circle">
 <li> Place spaces around all binary operators (=, +, -, &lt;-, etc.). </li>
 <ul type="square">
-  <li> Exception: Spaces around ='s are optional when passing parameters in a function call. </li>
+  <li> Exception: Spaces around =&#39;s are optional when passing parameters in a function call. </li>
   </ul>
 <li> Do not place a space before a comma, but always place one after a comma. </li>
 <li> The preferred form for variable names is all lower case letters and words separated with dots (variable.name). </li>
 <li> Function names have initial capital letters and no dots (FunctionName).</li>
-</ul>
+</ul></p>
 
 <h3> Use data.table </h3>
 
 <p>The data.table is The package which allow me to consider R as a software which could be used as equal to SAS (at least in marketing studies).</p>
 
-<p>The concepts could be tough at the beginning, but after a few time of practice, your productivity is multiplied.</p>
+<p>The concepts could be tough at the beginning, but after a few time of practice, your productivity is multiplied. </p>
 
-<p>The data.table allows, among others:</p>
+<p>The data.table allows, among others:
 <ul type="circle">
 <li> Fast import of csv.</li>
 <li> Fast merging through indexation.</li>
 <li> Fast variable modification.</li>
 <li> Fast summarisation of data.</li>
 <li> Fast ranking process.</li>
-</ul>
+</ul></p>
 
 <p>The only function needed to make this package the core data management in R is a version of sqlQuery of the RODBC package which query database directly into data.table.</p>
 
@@ -181,7 +181,7 @@ For more, read the introduction: (10 min here: <a href="https://github.com/Rdata
 <p>A good way to aprehend a set of data is to use data visualisation.
 The ggplot2 package allow, when mastered, to do highly customised graph. Even <a href="https://xkcd.com/519/">XKCD-like</a> ones (In this case, replace perl by ggplot2).</p>
 
-<p>The <a href="http://docs.ggplot2.org/current/">official documentation</a> is well made, but for beginners, <a href="http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/">this excellent blog</a> is more appropriate.</p>
+<p>The <a href="http://docs.ggplot2.org/current/">official documentation</a> is well made, but for beginners, <a href="http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/">this excellent blog</a> is more appropriate. </p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># exemple, for the diamonds data set:
 </span><span class="n">p1</span> <span class="o">&lt;-</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">carat</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">price</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">cut</span><span class="p">),</span> <span class="n">data</span> <span class="o">=</span> <span class="n">diamonds.dt</span><span class="p">)</span> <span class="o">+</span>
@@ -192,18 +192,18 @@ The ggplot2 package allow, when mastered, to do highly customised graph. Even <a
 
  <span class="n">grid.arrange</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span></code></pre></figure>
 
-<p><img src="/blogfigure/source/2015-08-28-Tips and tricks/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3" /></p>
+<p><img src="/blogfigure/source/2015-08-28-Tips%20and%20tricks/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"> </p>
 
-<p>A few concepts are good to handle:</p>
+<p>A few concepts are good to handle:
 <ul type="circle">
 <li> A ggplot2 object could be stored.</li>
 <ul type="square">
-<li> Customise a plot is the same as "summing" code. </li>
+<li> Customise a plot is the same as &quot;summing&quot; code. </li>
 <li> When you do a plot, it is good to build it element by element. </li>
 </ul>
-<li> Whatever your issue, someone on ![stackoverflow](https://stackoverflow.com/) already had the same one.  </li>
+<li> Whatever your issue, someone on <img src="https://stackoverflow.com/" alt="stackoverflow"> already had the same one.  </li>
 <li> It is better to plot already reshaped data, as plotting more than 10000 points could be slow and probably useless.  </li>
-</ul>
+</ul></p>
 
 <p>When doing an analysis, it is important to keep a track of whatever process you went through. Saving your graphs is a good practice and the ggsave function allows you to do so.</p>
 
@@ -252,12 +252,6 @@ The ggplot2 package allow, when mastered, to do highly customised graph. Even <a
 
 <p>With stdin() a template file or a connection and 1 the file to generate or a connection.</p>
 
-  </article>
-
-</div>
-
-		
-		
 	
 	<div id="disqus_thread"></div>
 
@@ -284,8 +278,12 @@ The ggplot2 package allow, when mastered, to do highly customised graph. Even <a
 	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 	<script id="dsq-count-scr" src="//datalaborereu.disqus.com/count.js" async></script>
-    
 	
+  </article>
+
+</div>
+
+		
       </div>
     </div>
     <footer class="site-footer">
@@ -298,7 +296,20 @@ The ggplot2 package allow, when mastered, to do highly customised graph. Even <a
       <div class="footer-col  footer-col-1">
         <ul class="contact-list">
           <li>Data Laborer</li>
-          <li><a href="mailto:yves.Crutain@gmail.com">yves.Crutain@gmail.com</a></li>
+                    
+          <li>
+            <a href="https://twitter.com/swiftAmhe">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">swiftAmhe</span>
+            </a>
+          </li>
+          
         </ul>
       </div>
 
@@ -314,21 +325,6 @@ The ggplot2 package allow, when mastered, to do highly customised graph. Even <a
               </span>
 
               <span class="username">yvesCR</span>
-            </a>
-          </li>
-          
-
-          
-          <li>
-            <a href="https://twitter.com/swiftAmhe">
-              <span class="icon  icon--twitter">
-                <svg viewBox="0 0 16 16">
-                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
-                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
-                </svg>
-              </span>
-
-              <span class="username">swiftAmhe</span>
             </a>
           </li>
           
