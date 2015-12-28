@@ -10,8 +10,8 @@
     <meta name="description" content="Personnal web site of a data scientist. Statistic, data-visualisation and hacks. Let's get our hands dirty.
 ">
 
-    <link rel="stylesheet" href="/blog/css/main.css">
-    <link rel="canonical" href="http://www.data-laborer.com/blog/2015/08/Number_of_Cluster.html">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://www.data-laborer.com/2015/08/Number_of_Cluster.html">
 	    
 	<script type="text/javascript"
     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -26,7 +26,7 @@
 
   <div class="wrapper">
 
-    <a class="site-title" href="/blog/" >Data Laborer </a>
+    <a class="site-title" href="/" >Data Laborer </a>
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
@@ -35,7 +35,7 @@
       <div class="trigger">
         
           
-          <a class="page-link" href="/blog/about/">About</a>
+          <a class="page-link" href="/about/">About</a>
           
         
           
@@ -82,12 +82,12 @@ Not too much separated, but not too messy. It is a simulation, not real life :)<
 <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">mat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">))</span> <span class="o">+</span>
     <span class="n">geom_point</span><span class="p">(</span> <span class="n">size</span> <span class="o">=</span> <span class="m">4</span><span class="p">)</span> </code></pre></figure>
 
-<p><img src="/blogfigure/source/2015-08-18-Number_of_Cluster/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"> </p>
+<p><img src="/blogfigure/source/2015-08-18-Number_of_Cluster/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1" /></p>
 
 <h2> Analysis </h2>
 
-<p><h3> Elbow plot </h3>
-Our main inspiration is that post on stackoverflow:</p>
+<h3> Elbow plot </h3>
+<p>Our main inspiration is that post on stackoverflow:</p>
 
 <p><a href="http://stackoverflow.com/questions/15376075/cluster-analysis-in-r-determine-the-optimal-number-of-clusters">http://stackoverflow.com/questions/15376075/cluster-analysis-in-r-determine-the-optimal-number-of-clusters</a></p>
 
@@ -112,9 +112,9 @@ The concept is to plot the sum of the distance between the centroid of the clust
   <span class="n">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">15</span><span class="p">)</span> <span class="o">+</span>
   <span class="n">ggtitle</span><span class="p">(</span><span class="s2">"Elbow plot"</span><span class="p">)</span></code></pre></figure>
 
-<p><img src="/blogfigure/source/2015-08-18-Number_of_Cluster/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"> </p>
+<p><img src="/blogfigure/source/2015-08-18-Number_of_Cluster/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4" /></p>
 
-<p><h3> The function NbClust </h3></p>
+<h3> The function NbClust </h3>
 
 <p>The function NbClust test a consequent set of methods to determine the optimal number of clusters.</p>
 
@@ -159,9 +159,9 @@ The concept is to plot the sum of the distance between the centroid of the clust
 <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">mat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">factor</span><span class="p">(</span><span class="n">res</span><span class="p">)))</span> <span class="o">+</span>
     <span class="n">geom_point</span><span class="p">(</span> <span class="n">size</span> <span class="o">=</span> <span class="m">4</span><span class="p">)</span></code></pre></figure>
 
-<p><img src="/blogfigure/source/2015-08-18-Number_of_Cluster/unnamed-chunk-10-1.png" alt="plot of chunk unnamed-chunk-10"> </p>
+<p><img src="/blogfigure/source/2015-08-18-Number_of_Cluster/unnamed-chunk-10-1.png" alt="plot of chunk unnamed-chunk-10" /></p>
 
-<p>There is another approach we didn&#39;t had time to look, but which seems promising:
+<p>There is another approach we didn’t had time to look, but which seems promising:
 The package BHC which does bayesian hierarchical clustering could also provide us an insight on the best cluster.</p>
 
 	
