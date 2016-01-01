@@ -91,7 +91,7 @@ Consequently, what I represent here is not the reality, it is the snapshot captu
         <span class="n">scale_fill_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="n">brewer.pal</span><span class="p">(</span><span class="m">8</span><span class="p">,</span> <span class="s2">"Greens"</span><span class="p">),</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">"Density of\n Population\n(pop/km2)"</span><span class="p">)</span> <span class="o">+</span>
   <span class="n">theme_map_uk</span></code></pre></figure>
 
-<p><img src="/figure/source/2015-12-28-MapUKpartII/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2" /></p>
+<p><img src="/blog/figure/source/2015-12-28-MapUKpartII/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2" /></p>
 
 <p>A bigger one (68 Mb) could be found with the code to produce it in my github account, here:</p>
 
@@ -134,7 +134,7 @@ To counter that effect, I tried a bagging k-means cluster, which didn’t create
       <span class="p">,</span> <span class="n">axis.title</span> <span class="o">=</span> <span class="n">element_blank</span><span class="p">()</span>
       <span class="p">,</span> <span class="n">panel.margin</span> <span class="o">=</span> <span class="n">unit</span><span class="p">(</span><span class="n">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> <span class="s2">"mm"</span><span class="p">))</span></code></pre></figure>
 
-<p><img src="/figure/source/2015-12-28-MapUKpartII/unnamed-chunk-5-1.png" alt="plot of chunk unnamed-chunk-5" /></p>
+<p><img src="/blog/figure/source/2015-12-28-MapUKpartII/unnamed-chunk-5-1.png" alt="plot of chunk unnamed-chunk-5" /></p>
 
 <p>With a zoom on Greater London:</p>
 
@@ -145,7 +145,7 @@ To counter that effect, I tried a bagging k-means cluster, which didn’t create
     <span class="n">coord_map</span><span class="p">(</span><span class="n">xlim</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span> <span class="n">ylim</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="m">51</span><span class="p">,</span> <span class="m">52</span><span class="p">))</span> <span class="o">+</span>
   <span class="n">theme_map_uk</span></code></pre></figure>
 
-<p><img src="/figure/source/2015-12-28-MapUKpartII/unnamed-chunk-6-1.png" alt="plot of chunk unnamed-chunk-6" /></p>
+<p><img src="/blog/figure/source/2015-12-28-MapUKpartII/unnamed-chunk-6-1.png" alt="plot of chunk unnamed-chunk-6" /></p>
 
 <p>We could clearly sees that in central London, the numbers are oddly low, then suddenly very high when we go further and it decrease with the distance.</p>
 
