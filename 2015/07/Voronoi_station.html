@@ -6,32 +6,41 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Finding the furthest point from the subway in London with Voronoi</title>
+    <title>Furthest point from the subway in London with Voronoi</title>
     <meta name="description" content="Personnal web site of a data scientist. Statistic, data-visualisation and hacks. Let's get our hands dirty.
 ">
 
     <link rel="stylesheet" href="/blog/css/main.css">
-    <link rel="canonical" href="http://www.data-laborer.com/blog/2015/07/Voronoi_station.html">
+    
+	<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 </head>
 
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71940303-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
   <body>
 
     <header class="site-header">
 
+
   <div class="wrapper">
 
-    <a class="site-title" href="/blog/">Data Laborer</a>
+    <a class="site-title" href="/blog/" >Data Laborer </a>
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
-        <svg viewBox="0 0 18 15">
-          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
-          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
-          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
-        </svg>
       </a>
-
+	
       <div class="trigger">
         
           
@@ -57,7 +66,7 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Finding the furthest point from the subway in London with Voronoi</h1>
+    <h1 class="post-title">Furthest point from the subway in London with Voronoi</h1>
     <p class="post-meta">Jul 16, 2015</p>
   </header>
 
@@ -98,7 +107,10 @@ The function get_map() allows to plot a map in a really efficient way and quite 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">ggmap</span><span class="p">)</span>
 <span class="n">library</span><span class="p">(</span><span class="n">alphahull</span><span class="p">)</span>
 <span class="n">library</span><span class="p">(</span><span class="n">SDMTools</span><span class="p">)</span> 
-<span class="c1"># load the libraries:
+<span class="n">library</span><span class="p">(</span><span class="n">devtools</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">animation</span><span class="p">)</span> <span class="c1"># install.packages("animation")
+</span><span class="n">library</span><span class="p">(</span><span class="n">ImageMagick</span><span class="p">)</span> <span class="c1">#install_github("ImageMagick")
+# load the libraries:
 </span><span class="n">l</span> <span class="o">&lt;-</span> <span class="n">lapply</span><span class="p">(</span><span class="n">c</span><span class="p">(</span><span class="s2">"data.table"</span><span class="p">,</span> <span class="s2">"alphahull"</span><span class="p">,</span> <span class="s2">"ggmap"</span><span class="p">,</span> <span class="s2">"SDMTools"</span><span class="p">,</span> <span class="s2">"sp"</span><span class="p">),</span> <span class="n">require</span><span class="p">,</span> <span class="n">character.only</span> <span class="o">=</span> <span class="n">T</span><span class="p">)</span>
 
   <span class="c1"># First, get the data:
@@ -130,11 +142,11 @@ The function get_map() allows to plot a map in a really efficient way and quite 
 
 <span class="c1"># plot the voronoi diagram without constraint:
 </span><span class="n">plot.no.map.voronoi</span> <span class="o">&lt;-</span> <span class="n">zones.london</span> <span class="o">+</span>
-  <span class="n">geom_segment</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">voronoi.full</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">mx1</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">my1</span><span class="p">,</span> <span class="n">xend</span> <span class="o">=</span> <span class="n">mx2</span><span class="p">,</span> <span class="n">yend</span> <span class="o">=</span> <span class="n">my2</span><span class="p">),</span> <span class="n">colour</span> <span class="o">=</span> <span class="s2">"red"</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">geom_segment</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">polygon.ext</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y1</span><span class="p">,</span> <span class="n">xend</span> <span class="o">=</span> <span class="n">x2</span><span class="p">,</span> <span class="n">yend</span> <span class="o">=</span> <span class="n">y2</span><span class="p">),</span> <span class="n">colour</span> <span class="o">=</span> <span class="s2">"blue"</span><span class="p">)</span>
+  <span class="n">geom_segment</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">voronoi.full</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">mx1</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">my1</span><span class="p">,</span> <span class="n">xend</span> <span class="o">=</span> <span class="n">mx2</span><span class="p">,</span> <span class="n">yend</span> <span class="o">=</span> <span class="n">my2</span><span class="p">),</span> <span class="n">colour</span> <span class="o">=</span> <span class="s2">"red"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="m">0.25</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">geom_segment</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">polygon.ext</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y1</span><span class="p">,</span> <span class="n">xend</span> <span class="o">=</span> <span class="n">x2</span><span class="p">,</span> <span class="n">yend</span> <span class="o">=</span> <span class="n">y2</span><span class="p">),</span> <span class="n">colour</span> <span class="o">=</span> <span class="s2">"blue"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="m">0.25</span><span class="p">)</span>
 <span class="n">plot.no.map.voronoi</span></code></pre></figure>
 
-<p><img src="/blogfigure/source/2015-07-16-Voronoi_station/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3" /></p>
+<p><img src="/blog/figure/source/2015-07-16-Voronoi_station/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3" /></p>
 
 <p>Now, we have the constraint and the voronoi diagram on all the subways station of the zone 1.</p>
 
@@ -182,11 +194,11 @@ The function get_map() allows to plot a map in a really efficient way and quite 
 
    <span class="c1"># plot the voronoi diagram with constraint &amp; only inside edge of voronoi diagram:
 </span><span class="n">zones.london.vor</span> <span class="o">&lt;-</span> <span class="n">zones.london</span> <span class="o">+</span>
-  <span class="n">geom_segment</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">polygon.ext</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y1</span><span class="p">,</span> <span class="n">xend</span> <span class="o">=</span> <span class="n">x2</span><span class="p">,</span> <span class="n">yend</span> <span class="o">=</span> <span class="n">y2</span><span class="p">),</span> <span class="n">colour</span> <span class="o">=</span> <span class="s2">"blue"</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">0.15</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">geom_segment</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">voronoi.part</span><span class="p">[</span><span class="n">pip.x</span> <span class="o">==</span> <span class="m">1</span> <span class="o">&amp;</span> <span class="n">pip.y</span> <span class="o">==</span> <span class="m">1</span><span class="p">,</span> <span class="p">],</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">mx2</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">my2</span><span class="p">,</span> <span class="n">xend</span> <span class="o">=</span> <span class="n">mx1</span><span class="p">,</span> <span class="n">yend</span> <span class="o">=</span> <span class="n">my1</span><span class="p">),</span> <span class="n">colour</span> <span class="o">=</span> <span class="s2">"red"</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">0.15</span><span class="p">)</span> 
+  <span class="n">geom_segment</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">polygon.ext</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y1</span><span class="p">,</span> <span class="n">xend</span> <span class="o">=</span> <span class="n">x2</span><span class="p">,</span> <span class="n">yend</span> <span class="o">=</span> <span class="n">y2</span><span class="p">),</span> <span class="n">colour</span> <span class="o">=</span> <span class="s2">"blue"</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">0.25</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">geom_segment</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">voronoi.part</span><span class="p">[</span><span class="n">pip.x</span> <span class="o">==</span> <span class="m">1</span> <span class="o">&amp;</span> <span class="n">pip.y</span> <span class="o">==</span> <span class="m">1</span><span class="p">,</span> <span class="p">],</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">mx2</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">my2</span><span class="p">,</span> <span class="n">xend</span> <span class="o">=</span> <span class="n">mx1</span><span class="p">,</span> <span class="n">yend</span> <span class="o">=</span> <span class="n">my1</span><span class="p">),</span> <span class="n">colour</span> <span class="o">=</span> <span class="s2">"red"</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">0.25</span><span class="p">)</span> 
 <span class="n">zones.london.vor</span></code></pre></figure>
 
-<p><img src="/blogfigure/source/2015-07-16-Voronoi_station/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4" /></p>
+<p><img src="/blog/figure/source/2015-07-16-Voronoi_station/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4" /></p>
 
 <h3>  Finding the furthest point from the subway </h3>
 
@@ -210,20 +222,14 @@ I use the spDistsN1 function to calculate the distance on a sphere.</p>
 </span><span class="n">zones.london.point</span> <span class="o">&lt;-</span> <span class="n">zones.london.vor</span> <span class="o">+</span>
    <span class="n">geom_point</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">min.coordinates</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">mx2</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">my2</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">"green"</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span> <span class="o">+</span>
   <span class="n">annotate</span><span class="p">(</span><span class="s2">"text"</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">min.coordinates</span><span class="o">$</span><span class="n">mx2</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">min.coordinates</span><span class="o">$</span><span class="n">my2</span> <span class="o">-</span> <span class="m">0.003</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">"The albert memorial"</span><span class="p">)</span>
-
 <span class="n">zones.london.point</span></code></pre></figure>
 
-<p><img src="/blogfigure/source/2015-07-16-Voronoi_station/unnamed-chunk-5-1.png" alt="plot of chunk unnamed-chunk-5" /></p>
+<p><img src="/blog/figure/source/2015-07-16-Voronoi_station/unnamed-chunk-5-1.png" alt="plot of chunk unnamed-chunk-5" /></p>
 
 <p>In the end, it appears that the furthest point from the subway in London is near the Albert memorial. If you already find yourself hanging there and thinking that the next subway station was quite far, be rassured, it’s definitely normal. :)</p>
 
 
-  </article>
-
-</div>
-
-      </div>
-    </div>
+	
 	<div id="disqus_thread"></div>
 
 	<script>
@@ -248,6 +254,15 @@ I use the spDistsN1 function to calculate the distance on a sphere.</p>
 	</script>
 	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
+	<script id="dsq-count-scr" src="//datalaborereu.disqus.com/count.js" async></script>
+	
+  </article>
+
+</div>
+
+		
+      </div>
+    </div>
     <footer class="site-footer">
 
   <div class="wrapper">
@@ -258,7 +273,20 @@ I use the spDistsN1 function to calculate the distance on a sphere.</p>
       <div class="footer-col  footer-col-1">
         <ul class="contact-list">
           <li>Data Laborer</li>
-          <li><a href="mailto:yves.Crutain@gmail.com">yves.Crutain@gmail.com</a></li>
+                    
+          <li>
+            <a href="https://twitter.com/swiftAmhe">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">swiftAmhe</span>
+            </a>
+          </li>
+          
         </ul>
       </div>
 
@@ -277,21 +305,6 @@ I use the spDistsN1 function to calculate the distance on a sphere.</p>
             </a>
           </li>
           
-
-          
-          <li>
-            <a href="https://twitter.com/swiftAmhe">
-              <span class="icon  icon--twitter">
-                <svg viewBox="0 0 16 16">
-                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
-                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
-                </svg>
-              </span>
-
-              <span class="username">swiftAmhe</span>
-            </a>
-          </li>
-          
         </ul>
       </div>
 
@@ -306,8 +319,6 @@ I use the spDistsN1 function to calculate the distance on a sphere.</p>
 </footer>
 
 	
-	<script id="dsq-count-scr" src="//datalaborereu.disqus.com/count.js" async></script>
-    
   </body>
 
 </html>
