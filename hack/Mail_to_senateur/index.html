@@ -178,10 +178,8 @@
 <p>The first step is to get all the personal web pages of the senators.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># packages used: 
-</span><span class="n">library</span><span class="p">(</span><span class="n">XML</span><span class="p">)</span> <span class="c1"># install.packages("XML")
-</span><span class="n">library</span><span class="p">(</span><span class="n">plyr</span><span class="p">)</span> <span class="c1"># install.packages("plyr")
-</span><span class="n">library</span><span class="p">(</span><span class="n">stringr</span><span class="p">)</span> <span class="c1"># install.packages("stringr")
-</span>
+</span><span class="n">pacman</span><span class="o">::</span><span class="n">p_load</span><span class="p">(</span><span class="n">XML</span><span class="p">,</span> <span class="n">plyr</span><span class="p">,</span> <span class="n">stringr</span><span class="p">)</span>
+
 <span class="c1"># url of the main page of the senat website
 </span><span class="n">xml.url.short</span> <span class="o">&lt;-</span> <span class="s2">"http://www.senat.fr"</span> 
 <span class="n">xml.url</span> <span class="o">&lt;-</span> <span class="n">paste0</span><span class="p">(</span><span class="n">xml.url.short</span><span class="p">,</span> <span class="s2">"/senateurs/senatl.html"</span><span class="p">)</span>
