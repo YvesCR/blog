@@ -1,0 +1,77 @@
+<p>Last year, I began this blog using wordpress and ended not really satisfied. Mainly for two reason:</p>
+
+<ul>
+  <li>I can’t include javascript in my posts, including the js produced by the functions of the <code class="highlighter-rouge">htmlwidgets</code> package.</li>
+  <li>I wasn’t able to display on my blog the correct rmarkdown syntax color for my code.</li>
+</ul>
+
+<p>After a few research, I decided to move to a jekyll blog, and to use the trio jekyll + rmarkdown + github.</p>
+
+<p>The combination of jekyll, rmarkdown and github allows to create a nice blog, totally customisable and totally free, as the blog could be freely hosted on github.</p>
+
+<p>It is hard to begin from 0. And thanks to <a href="https://github.com/yihui/knitr-jekyll">Yihui Xie</a>, a template exist.</p>
+
+<p>In a couple of click, it is possible to have a template to work on. And with a little bit of head scratching, it is possible to customise it up to your wishes.</p>
+
+<h2 id="jekyll">Jekyll</h2>
+
+<p>What is <a href="https://jekyllrb.com/">jekyll</a>? Jekyll is a generator of static websites and blogs.</p>
+
+<p>How does it works?</p>
+
+<ul>
+  <li>Write your article in markdown or html format.</li>
+  <li>In the header, add the title, date, description, tags, categories, etc.</li>
+  <li>Put the file in the _posts folder.</li>
+  <li>Execute jekyll. Jekyll test all the files in the _posts folders and when one is modified, convert the file in the final post.
+    <ul>
+      <li>Add to the index page the link to the modified/new post.</li>
+      <li>Add to the original source post the widgets, tags, categories, etc.</li>
+    </ul>
+  </li>
+  <li>The new post is copied in the destination folder, which is your generated blog.</li>
+</ul>
+
+<h2 id="r-markdown">R markdown</h2>
+
+<p><a href="http://rmarkdown.rstudio.com/">R markdown</a> is a way to include chunks of R code into a markdown document.</p>
+
+<p>In the <code class="highlighter-rouge">servr</code> package, the <code class="highlighter-rouge">jekyll()</code> function allows to sets up a web server to serve a jekyll-based website:</p>
+
+<p>With jekyll and R markdown, the update process is different:</p>
+
+<ul>
+  <li>Execute <code class="highlighter-rouge">jekyll()</code>.</li>
+  <li>Write your article in a .rmd format.</li>
+  <li>Put your .rmd article in the _source folder.</li>
+  <li>The article is automatically compiled using rmarkdown, creating a .md file in the _posts folder.</li>
+  <li>Jekyll convert the .md to the final post format.</li>
+</ul>
+
+<p>The result could be seen in the web browser automatically refreshed, which make the writing process really easy.</p>
+
+<h2 id="github">Github</h2>
+
+<p>One great thing with jekyll is that it is possible to host your web site on github.</p>
+
+<p>How Github cooperate with R markdown and Jekyll?</p>
+
+<p>Simply coordinate the static website folder with a github repositery. Then parametise this repositery to be  on a gh-pages branch, et voila!, you could see your website.</p>
+
+<p>In the end, updating the blog is as easy as write a .rmd file and coordinate the generated result to github.</p>
+
+<h2 id="issues">Issues</h2>
+
+<p>In the end, the main issue I get is when it comes to write formulas. To display formulas, I have to knit the .Rmd and manually add the YAML Front Matter in the html page. But otherwise, all is automated.</p>
+
+<p>I didn’t found that much websites made that way. But a few people have made similar articles. Among them:</p>
+
+<ul>
+  <li><a href="http://brendanrocks.com/blogging-with-rmarkdown-knitr-jekyll/">Brendan Rocks</a></li>
+  <li><a href="https://nicolewhite.github.io/2015/02/07/r-blogging-with-rmarkdown-knitr-jekyll.html">Nicole White</a></li>
+  <li><a href="http://www.njtierney.com/jekyll/2015/11/11/how-i-built-my-site/">Nicholas Tierney</a></li>
+  <li><a href="http://nicolashery.com/fast-mobile-friendly-website-with-jekyll/">Nicolas Hery</a></li>
+  <li><a href="http://joshualande.com/jekyll-github-pages-poole/">Joshua Lande</a></li>
+  <li><a href="https://ialsa.github.io/tutorials/gh-pages-setup.html">IALSA tutorial website</a></li>
+</ul>
+
