@@ -8,7 +8,7 @@ getwd()
 options("base64_images")
 
 # serve the blog subfolder: basically, the dev version
-servr::jekyll(dir = ".", input = "_source"
+servr::jekyll(dir = ".", input = "_posts"
        , script = c("Makefile", "build.R"), serve = F
        , command = "bundle exec jekyll build")
 
