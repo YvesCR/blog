@@ -49,6 +49,8 @@
 
 
 
+  <meta property="og:image" content="https://yvescr.github.io/blog/images/1998_orange_bleue_Scud.jpg">
+
 
 
   <meta property="og:type" content="article">
@@ -65,7 +67,7 @@
     {
       "@context" : "http://schema.org",
       "@type" : "Person",
-      "name" : "Yves Crutain",
+      "name" : "",
       "url" : "https://yvescr.github.io/blog",
       "sameAs" : null
     }
@@ -127,7 +129,7 @@
           <li class="masthead__menu-item masthead__menu-item--lg"><a href="https://yvescr.github.io/blog/">Data laborer</a></li>
           
             
-            <li class="masthead__menu-item"><a href="https://mmistakes.github.io/about/">About</a></li>
+            <li class="masthead__menu-item"><a href="https://data-laborer.eu/about/">About</a></li>
           
         </ul>
         <ul class="hidden-links hidden"></ul>
@@ -139,39 +141,35 @@
     
 
 
-
-
-
-<div id="main" role="main">
   
 
 
 
-  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+
+
+
+
+
+
+<div class="page__hero"
+  style=" "
+>
+  
+    <img src="https://yvescr.github.io/blog/images/1998_orange_bleue_Scud.jpg" alt="Shiny gadget to pick ARIMA parameter" class="page__hero-image">
+  
+  
+</div>
+
+
+<div id="main" role="main">
+  <article class="splash" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Shiny gadget to pick ARIMA parameter">
     <meta itemprop="description" content="">
     <meta itemprop="datePublished" content="April 23, 2016">
     
 
-    <div class="page__inner-wrap">
-      
-        <header>
-          <h1 class="page__title" itemprop="headline">Shiny gadget to pick ARIMA parameter
-</h1>
-          
-            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-  
-	  1 minute read
-	
-</p>
-          
-        </header>
-      
-
-      <section class="page__content" itemprop="text">
-        <p><img src="https://yvescr.github.io/image/arimaUI_Picker.gif" alt="Presentation of a shiny gadget allowing to pick arima parameters" style="margin:0px;margin-right:2%;text-align: center;vertical-align: middle;" /></p>
+    <section class="page__content" itemprop="text">
+      <p><img src="https://yvescr.github.io/image/arimaUI_Picker.gif" alt="Presentation of a shiny gadget allowing to pick arima parameters" style="margin:0px;margin-right:2%;text-align: center;vertical-align: middle;" /></p>
 
 <p>ARIMA is a type of model widely used in time series problems, for exemple to predict sales or stocks.</p>
 
@@ -188,149 +186,40 @@ Otherwise, you still could enjoy the <code class="highlighter-rouge">arimaUI</co
 
 <p>To install the add-in:</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">devtools</span><span class="p">)</span>
-<span class="n">install_github</span><span class="p">(</span><span class="s2">"YvesCR/arimaUI"</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">devtools</span><span class="p">)</span><span class="w">
+</span><span class="n">install_github</span><span class="p">(</span><span class="s2">"YvesCR/arimaUI"</span><span class="p">)</span></code></pre></figure>
 
 <p>The best way to familiarize yourself with the function is to play with it.
 For exemple by simulating in a blind way the components of your time serie:</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># simulation of the components (p, d, q). 
-</span><span class="n">order.blind</span> <span class="o">&lt;-</span> <span class="n">floor</span><span class="p">(</span><span class="n">runif</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">3</span><span class="p">))</span>
+</span><span class="n">order.blind</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">floor</span><span class="p">(</span><span class="n">runif</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">))</span><span class="w">
 
-<span class="c1"># For ARIMA models with differencing, the differenced series follows a zero-mean ARMA model
-</span><span class="k">if</span><span class="p">(</span><span class="n">order.blind</span><span class="p">[</span><span class="m">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="n">order.blind</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="m">0</span>
+</span><span class="c1"># For ARIMA models with differencing, the differenced series follows a zero-mean ARMA model
+</span><span class="k">if</span><span class="p">(</span><span class="n">order.blind</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="n">order.blind</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0</span><span class="w">
 
-<span class="c1"># simulation of the parameters
-</span><span class="n">ar.blind</span> <span class="o">&lt;-</span> <span class="n">runif</span><span class="p">(</span><span class="n">order.blind</span><span class="p">[</span><span class="m">1</span><span class="p">],</span> <span class="m">-1</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
-<span class="n">ma.blind</span> <span class="o">&lt;-</span> <span class="n">runif</span><span class="p">(</span><span class="n">order.blind</span><span class="p">[</span><span class="m">3</span><span class="p">],</span> <span class="m">-1</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+</span><span class="c1"># simulation of the parameters
+</span><span class="n">ar.blind</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">runif</span><span class="p">(</span><span class="n">order.blind</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+</span><span class="n">ma.blind</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">runif</span><span class="p">(</span><span class="n">order.blind</span><span class="p">[</span><span class="m">3</span><span class="p">],</span><span class="w"> </span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
 
-<span class="c1"># below 50 points, finding the correct components is challenging.
-</span><span class="n">sim.ts</span> <span class="o">&lt;-</span> <span class="n">arima.sim</span><span class="p">(</span>
-<span class="n">n</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">list</span><span class="p">(</span>
-  <span class="n">order</span> <span class="o">=</span> <span class="n">order.blind</span><span class="p">,</span>
-  <span class="n">ar</span> <span class="o">=</span> <span class="n">ar.blind</span>
-<span class="p">,</span> <span class="n">ma</span> <span class="o">=</span> <span class="n">ma.blind</span>
-<span class="p">))</span>
+</span><span class="c1"># below 50 points, finding the correct components is challenging.
+</span><span class="n">sim.ts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">arima.sim</span><span class="p">(</span><span class="w">
+</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w">
+</span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="w">
+  </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">order.blind</span><span class="p">,</span><span class="w">
+  </span><span class="n">ar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ar.blind</span><span class="w">
+</span><span class="p">,</span><span class="w"> </span><span class="n">ma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ma.blind</span><span class="w">
+</span><span class="p">))</span><span class="w">
 
-<span class="n">list.res</span> <span class="o">&lt;-</span> <span class="n">arimaUI</span><span class="p">(</span><span class="n">sim.ts</span><span class="p">)</span></code></pre></figure>
+</span><span class="n">list.res</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">arimaUI</span><span class="p">(</span><span class="n">sim.ts</span><span class="p">)</span></code></pre></figure>
 
 <p>If the numbers of the components that you pick in the end is equal to the ones which had been randomly selected, you are truly skilled, congratulations.</p>
 
 <p>To note, when the coefficients are near 0, there is simply no way to guess them. It is indeed a tricky game.</p>
 
 
-        
-      </section>
-
-      <footer class="page__meta">
-        
-        
-
-
-  
-
-
-
-
-  
-  
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
-    <span itemprop="keywords">
-    
-      
-      
-      <a href="https://yvescr.github.io/blog/tags/#arima" class="page__taxonomy-item" rel="tag">arima</a><span class="sep">, </span>
-    
-      
-      
-      <a href="https://yvescr.github.io/blog/tags/#r" class="page__taxonomy-item" rel="tag">R</a><span class="sep">, </span>
-    
-      
-      
-      <a href="https://yvescr.github.io/blog/tags/#shiny" class="page__taxonomy-item" rel="tag">shiny</a>
-    
-    </span>
-  </p>
-
-
-
-
-  
-
-
-
-
-
-
-  
-  
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
-    <span itemprop="keywords">
-    
-      
-      
-      <a href="https://yvescr.github.io/blog/categories/#arima" class="page__taxonomy-item" rel="tag">ARIMA</a><span class="sep">, </span>
-    
-      
-      
-      <a href="https://yvescr.github.io/blog/categories/#data-visualisation" class="page__taxonomy-item" rel="tag">Data visualisation</a><span class="sep">, </span>
-    
-      
-      
-      <a href="https://yvescr.github.io/blog/categories/#shiny" class="page__taxonomy-item" rel="tag">shiny</a><span class="sep">, </span>
-    
-      
-      
-      <a href="https://yvescr.github.io/blog/categories/#statistic" class="page__taxonomy-item" rel="tag">Statistic</a>
-    
-    </span>
-  </p>
-
-
-        
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-04-23T00:00:00+01:00">April 23, 2016</time></p>
-        
-      </footer>
-
-      
-
-      
-
-
-  <nav class="pagination">
-    
-      <a href="https://yvescr.github.io/blog/Unicycle_comparison/" class="pagination--pager" title="How to choose your electric unicycle/monowheel
-">Previous</a>
-    
-    
-      <a href="https://yvescr.github.io/blog/hack/Presentation_of_the_Ropencorporate_package/" class="pagination--pager" title="Ropencorporate package: extract companies details
-">Next</a>
-    
-  </nav>
-
-    </div>
-
-    
-      
-
-<div class="page__comments">
-  <h4 class="page__comments-title">Leave a Comment</h4>
-  
-    <section id="disqus_thread"></section>
-  
-</div>
-    
+    </section>
   </article>
-
-  
-  
 </div>
 
     <div class="page__footer">
@@ -355,7 +244,7 @@ For exemple by simulating in a blind way the components of your time serie:</p>
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2016 Yves Crutain. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2016 Data laborer. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
       </footer>
     </div>
 

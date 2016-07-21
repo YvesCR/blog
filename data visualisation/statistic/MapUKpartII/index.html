@@ -49,6 +49,8 @@
 
 
 
+  <meta property="og:image" content="https://yvescr.github.io/blog/images/london_ghost.jpg">
+
 
 
   <meta property="og:type" content="article">
@@ -65,7 +67,7 @@
     {
       "@context" : "http://schema.org",
       "@type" : "Person",
-      "name" : "Yves Crutain",
+      "name" : "",
       "url" : "https://yvescr.github.io/blog",
       "sameAs" : null
     }
@@ -127,7 +129,7 @@
           <li class="masthead__menu-item masthead__menu-item--lg"><a href="https://yvescr.github.io/blog/">Data laborer</a></li>
           
             
-            <li class="masthead__menu-item"><a href="https://mmistakes.github.io/about/">About</a></li>
+            <li class="masthead__menu-item"><a href="https://data-laborer.eu/about/">About</a></li>
           
         </ul>
         <ul class="hidden-links hidden"></ul>
@@ -139,40 +141,36 @@
     
 
 
-
-
-
-<div id="main" role="main">
   
 
 
 
-  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+
+
+
+
+
+
+<div class="page__hero"
+  style=" "
+>
+  
+    <img src="https://yvescr.github.io/blog/images/london_ghost.jpg" alt="Choropleth map of the UK with R - Part II:
+ Is central London a ghost town?" class="page__hero-image">
+  
+  
+</div>
+
+
+<div id="main" role="main">
+  <article class="splash" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Choropleth map of the UK with R - Part II: Is central London a ghost town?">
     <meta itemprop="description" content="In the first part, we get a nice tool of visualisation of the district postcode area, a chloropeth Map.">
     <meta itemprop="datePublished" content="December 28, 2015">
     
 
-    <div class="page__inner-wrap">
-      
-        <header>
-          <h1 class="page__title" itemprop="headline">Choropleth map of the UK with R - Part II:
- Is central London a ghost town?
-</h1>
-          
-            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-  
-	  3 minute read
-	
-</p>
-          
-        </header>
-      
-
-      <section class="page__content" itemprop="text">
-        <p>In the first part, we get a nice tool of visualisation of the district postcode area, a chloropeth Map.</p>
+    <section class="page__content" itemprop="text">
+      <p>In the first part, we get a nice tool of visualisation of the district postcode area, a chloropeth Map.</p>
 
 <p>Now, I want to do some real analysis on the districts.</p>
 
@@ -188,17 +186,17 @@ Consequently, what I represent here is not the reality, it is the snapshot captu
 
 <p>I made here a small map of the density in the UK:</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r">  <span class="n">theme_map_uk</span> <span class="o">&lt;-</span> <span class="n">theme</span><span class="p">(</span><span class="n">legend.position</span> <span class="o">=</span> <span class="s2">"right"</span>
-        <span class="p">,</span> <span class="n">axis.ticks</span> <span class="o">=</span> <span class="n">element_blank</span><span class="p">()</span>
-        <span class="p">,</span> <span class="n">axis.text</span> <span class="o">=</span> <span class="n">element_blank</span><span class="p">()</span>
-        <span class="p">,</span> <span class="n">axis.title</span> <span class="o">=</span> <span class="n">element_blank</span><span class="p">()</span>
-        <span class="p">,</span> <span class="n">panel.margin</span> <span class="o">=</span> <span class="n">unit</span><span class="p">(</span><span class="n">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> <span class="s2">"mm"</span><span class="p">))</span>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="w">  </span><span class="n">theme_map_uk</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"right"</span><span class="w">
+        </span><span class="p">,</span><span class="w"> </span><span class="n">axis.ticks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element_blank</span><span class="p">()</span><span class="w">
+        </span><span class="p">,</span><span class="w"> </span><span class="n">axis.text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element_blank</span><span class="p">()</span><span class="w">
+        </span><span class="p">,</span><span class="w"> </span><span class="n">axis.title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element_blank</span><span class="p">()</span><span class="w">
+        </span><span class="p">,</span><span class="w"> </span><span class="n">panel.margin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unit</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span><span class="w"> </span><span class="s2">"mm"</span><span class="p">))</span><span class="w">
 
-<span class="n">ggmap</span><span class="p">(</span><span class="n">map</span><span class="p">)</span>  <span class="o">+</span>
-  <span class="n">geom_polygon</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">pop2</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">lng</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">lat</span>
-        <span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="n">density.cut</span><span class="p">,</span> <span class="n">group</span> <span class="o">=</span> <span class="n">name</span><span class="p">),</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.8</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">0.6</span><span class="p">)</span> <span class="o">+</span>
-        <span class="n">scale_fill_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="n">brewer.pal</span><span class="p">(</span><span class="m">8</span><span class="p">,</span> <span class="s2">"Greens"</span><span class="p">),</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">"Density of\n Population\n(pop/km2)"</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">theme_map_uk</span></code></pre></figure>
+</span><span class="n">ggmap</span><span class="p">(</span><span class="n">map</span><span class="p">)</span><span class="w">  </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_polygon</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pop2</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lng</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lat</span><span class="w">
+        </span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">density.cut</span><span class="p">,</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.8</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.6</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+        </span><span class="n">scale_fill_manual</span><span class="p">(</span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">brewer.pal</span><span class="p">(</span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="s2">"Greens"</span><span class="p">),</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Density of\n Population\n(pop/km2)"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">theme_map_uk</span></code></pre></figure>
 
 <p><img src="/blog/figure/source/2015-12-28-MapUKpartII/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2" /></p>
 
@@ -224,35 +222,35 @@ To counter that effect, I tried a bagging k-means cluster, which didn’t create
 <p>With a final number of cluster of 15, it is possible to define new British regions based on the density of population.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># Ward Hierarchical Clustering. pop4 is a data.table
-</span><span class="n">d</span> <span class="o">&lt;-</span> <span class="n">dist</span><span class="p">(</span><span class="n">pop4</span><span class="p">[,</span> <span class="n">list</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">density2</span><span class="p">)],</span> <span class="n">method</span> <span class="o">=</span> <span class="s2">"euclidean"</span><span class="p">)</span> <span class="c1"># distance matrix
-</span><span class="n">fit</span> <span class="o">&lt;-</span> <span class="n">hclust</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"ward.D2"</span><span class="p">)</span>
-<span class="n">groups</span> <span class="o">&lt;-</span> <span class="n">cutree</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="m">15</span><span class="p">)</span> <span class="c1"># cut tree into 15 clusters
-</span>
-<span class="c1">#pop4b &lt;- cbind(pop4, predict = bclust.res$cluster)
-</span><span class="n">pop4b</span> <span class="o">&lt;-</span> <span class="n">cbind</span><span class="p">(</span><span class="n">pop4</span><span class="p">,</span> <span class="n">predict</span> <span class="o">=</span> <span class="n">groups</span><span class="p">)</span>
-<span class="n">pop4c</span> <span class="o">&lt;-</span> <span class="n">merge</span><span class="p">(</span><span class="n">pop2</span><span class="p">,</span> <span class="n">pop4b</span><span class="p">[,</span> <span class="n">list</span><span class="p">(</span><span class="n">predict</span><span class="p">,</span> <span class="n">name</span><span class="p">)],</span> <span class="n">by</span> <span class="o">=</span> <span class="s2">"name"</span><span class="p">,</span> <span class="n">all.x</span> <span class="o">=</span> <span class="n">T</span><span class="p">)</span>
-<span class="n">pop4c</span><span class="p">[,</span> <span class="n">density.cut.predict</span> <span class="o">:=</span> <span class="n">log</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">density</span><span class="p">)),</span> <span class="n">by</span> <span class="o">=</span> <span class="s2">"predict"</span><span class="p">]</span></code></pre></figure>
+</span><span class="n">d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dist</span><span class="p">(</span><span class="n">pop4</span><span class="p">[,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">density2</span><span class="p">)],</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"euclidean"</span><span class="p">)</span><span class="w"> </span><span class="c1"># distance matrix
+</span><span class="n">fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">hclust</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="o">=</span><span class="s2">"ward.D2"</span><span class="p">)</span><span class="w">
+</span><span class="n">groups</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cutree</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="o">=</span><span class="m">15</span><span class="p">)</span><span class="w"> </span><span class="c1"># cut tree into 15 clusters
+</span><span class="w">
+</span><span class="c1">#pop4b &lt;- cbind(pop4, predict = bclust.res$cluster)
+</span><span class="n">pop4b</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cbind</span><span class="p">(</span><span class="n">pop4</span><span class="p">,</span><span class="w"> </span><span class="n">predict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">groups</span><span class="p">)</span><span class="w">
+</span><span class="n">pop4c</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">merge</span><span class="p">(</span><span class="n">pop2</span><span class="p">,</span><span class="w"> </span><span class="n">pop4b</span><span class="p">[,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">predict</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">)],</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"name"</span><span class="p">,</span><span class="w"> </span><span class="n">all.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w">
+</span><span class="n">pop4c</span><span class="p">[,</span><span class="w"> </span><span class="n">density.cut.predict</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">density</span><span class="p">)),</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"predict"</span><span class="p">]</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ggmap</span><span class="p">(</span><span class="n">map</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">geom_polygon</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">pop4c</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">lng</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">lat</span>
-      <span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="n">density.cut.predict</span><span class="p">,</span> <span class="n">group</span> <span class="o">=</span> <span class="n">name</span><span class="p">),</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.8</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">)</span> <span class="o">+</span>
-    <span class="n">scale_fill_continuous</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"Density of\n Population\n(log(pop/km2))"</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">theme</span><span class="p">(</span><span class="n">legend.position</span> <span class="o">=</span> <span class="s2">"right"</span>
-      <span class="p">,</span> <span class="n">axis.ticks</span> <span class="o">=</span> <span class="n">element_blank</span><span class="p">()</span>
-      <span class="p">,</span> <span class="n">axis.text</span> <span class="o">=</span> <span class="n">element_blank</span><span class="p">()</span>
-      <span class="p">,</span> <span class="n">axis.title</span> <span class="o">=</span> <span class="n">element_blank</span><span class="p">()</span>
-      <span class="p">,</span> <span class="n">panel.margin</span> <span class="o">=</span> <span class="n">unit</span><span class="p">(</span><span class="n">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> <span class="s2">"mm"</span><span class="p">))</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ggmap</span><span class="p">(</span><span class="n">map</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_polygon</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pop4c</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lng</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lat</span><span class="w">
+      </span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">density.cut.predict</span><span class="p">,</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.8</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">scale_fill_continuous</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Density of\n Population\n(log(pop/km2))"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"right"</span><span class="w">
+      </span><span class="p">,</span><span class="w"> </span><span class="n">axis.ticks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element_blank</span><span class="p">()</span><span class="w">
+      </span><span class="p">,</span><span class="w"> </span><span class="n">axis.text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element_blank</span><span class="p">()</span><span class="w">
+      </span><span class="p">,</span><span class="w"> </span><span class="n">axis.title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element_blank</span><span class="p">()</span><span class="w">
+      </span><span class="p">,</span><span class="w"> </span><span class="n">panel.margin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unit</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span><span class="w"> </span><span class="s2">"mm"</span><span class="p">))</span></code></pre></figure>
 
 <p><img src="/blog/figure/source/2015-12-28-MapUKpartII/unnamed-chunk-5-1.png" alt="plot of chunk unnamed-chunk-5" /></p>
 
 <p>With a zoom on Greater London:</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ggmap</span><span class="p">(</span><span class="n">map2</span><span class="p">)</span>  <span class="o">+</span>
-  <span class="n">geom_polygon</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">pop4c</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">lng</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">lat</span>
-        <span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="n">density.cut.predict</span><span class="p">,</span> <span class="n">group</span> <span class="o">=</span> <span class="n">name</span><span class="p">),</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.8</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">)</span> <span class="o">+</span>
-    <span class="n">scale_fill_continuous</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"Density of\n Population\n(log(pop/km2))"</span><span class="p">)</span> <span class="o">+</span>
-    <span class="n">coord_map</span><span class="p">(</span><span class="n">xlim</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span> <span class="n">ylim</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="m">51</span><span class="p">,</span> <span class="m">52</span><span class="p">))</span> <span class="o">+</span>
-  <span class="n">theme_map_uk</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ggmap</span><span class="p">(</span><span class="n">map2</span><span class="p">)</span><span class="w">  </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_polygon</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pop4c</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lng</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lat</span><span class="w">
+        </span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">density.cut.predict</span><span class="p">,</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.8</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">scale_fill_continuous</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Density of\n Population\n(log(pop/km2))"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">coord_map</span><span class="p">(</span><span class="n">xlim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="n">ylim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">51</span><span class="p">,</span><span class="w"> </span><span class="m">52</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">theme_map_uk</span></code></pre></figure>
 
 <p><img src="/blog/figure/source/2015-12-28-MapUKpartII/unnamed-chunk-6-1.png" alt="plot of chunk unnamed-chunk-6" /></p>
 
@@ -262,109 +260,8 @@ To counter that effect, I tried a bagging k-means cluster, which didn’t create
 
 <p>In the end, it is really easy to create new regions and to make really accurate clusters of district. The question of the small number of inhabitants in central London is definitely weird and appeal new analysis, looking for exemple at the number of offices and houses. If a majority of the constructions are offices, the mistery would be resolved. Otherwise, in spite of the tremendous amount of activity, these part of London could be nicknamed as “the ghost town”.</p>
 
-        
-      </section>
-
-      <footer class="page__meta">
-        
-        
-
-
-  
-
-
-
-
-  
-  
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
-    <span itemprop="keywords">
-    
-      
-      
-      <a href="https://yvescr.github.io/blog/tags/#ggmap" class="page__taxonomy-item" rel="tag">ggmap</a><span class="sep">, </span>
-    
-      
-      
-      <a href="https://yvescr.github.io/blog/tags/#london" class="page__taxonomy-item" rel="tag">London</a><span class="sep">, </span>
-    
-      
-      
-      <a href="https://yvescr.github.io/blog/tags/#r" class="page__taxonomy-item" rel="tag">R</a>
-    
-    </span>
-  </p>
-
-
-
-
-  
-
-
-
-
-
-
-  
-  
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
-    <span itemprop="keywords">
-    
-      
-      
-      <a href="https://yvescr.github.io/blog/categories/#data-visualisation" class="page__taxonomy-item" rel="tag">Data visualisation</a><span class="sep">, </span>
-    
-      
-      
-      <a href="https://yvescr.github.io/blog/categories/#statistic" class="page__taxonomy-item" rel="tag">Statistic</a>
-    
-    </span>
-  </p>
-
-
-        
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2015-12-28T00:00:00+00:00">December 28, 2015</time></p>
-        
-      </footer>
-
-      
-
-      
-
-
-  <nav class="pagination">
-    
-      <a href="https://yvescr.github.io/blog/Why_blogging_with_jekyll/" class="pagination--pager" title="Why I moved to a jekyll blog
-">Previous</a>
-    
-    
-      <a href="https://yvescr.github.io/blog/Unicycle_comparison/" class="pagination--pager" title="How to choose your electric unicycle/monowheel
-">Next</a>
-    
-  </nav>
-
-    </div>
-
-    
-      
-
-<div class="page__comments">
-  <h4 class="page__comments-title">Leave a Comment</h4>
-  
-    <section id="disqus_thread"></section>
-  
-</div>
-    
+    </section>
   </article>
-
-  
-  
 </div>
 
     <div class="page__footer">
@@ -389,7 +286,7 @@ To counter that effect, I tried a bagging k-means cluster, which didn’t create
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2016 Yves Crutain. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2016 Data laborer. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
       </footer>
     </div>
 
