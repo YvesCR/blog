@@ -4,12 +4,12 @@ title: "Shiny gadget to pick ARIMA parameter"
 categories: [Statistic]
 tags: [R, Data visualisation, Statistic, ARIMA, shiny]
 date: 2016-04-23
-description: Presentation of a shiny gadget allowing to pick arima parameters
+excerpt: Presentation of a shiny gadget allowing to pick arima parameters.
 image: /assets/images/1998_orange_bleue_Scud.jpg
 
 ---
 
-  <img src="https://yvescr.github.io/image/arimaUI_Picker.gif" alt="Presentation of a shiny gadget allowing to pick arima parameters" 
+<img src="https://yvescr.github.io/image/arimaUI_Picker.gif" alt="Presentation of a shiny gadget allowing to pick arima parameters" 
 		style="margin:0px;margin-right:2%;text-align: center;vertical-align: middle;">
 
 ARIMA is a type of model widely used in time series problems, for exemple to predict sales or stocks.
